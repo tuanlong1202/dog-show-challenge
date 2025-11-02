@@ -12,6 +12,11 @@ function updateDog() {
         breed : document.getElementById('breed').value,
         sex : document.getElementById('sex').value
     };
+    if (!dog.id) {
+        alert('Please select a dog to edit.');
+        resetForm();
+        return;
+    };
     let url =`http://localhost:3000/dogs/${dog.id}`;
     fetch(url, {
         method: "PATCH",
@@ -21,7 +26,10 @@ function updateDog() {
         body: JSON.stringify(dog)
     })
     .then(response => response.json())
-    .then()
+    .then(() => {
+        resetForm();
+        loadDogs();
+    })
     .catch(function(error){
         console.log(error.message);
     });
@@ -81,4 +89,11 @@ function activeForm(item) {
     document.getElementById('name').value = item.name;
     document.getElementById('breed').value = item.breed;
     document.getElementById('sex').value = item.sex;
+}
+
+function resetForm() {
+    document.getElementById('id').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('breed').value = '';
+    document.getElementById('sex').value = '';
 }
