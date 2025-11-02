@@ -23,7 +23,7 @@ function updateDog() {
     .then(response => response.json())
     .then()
     .catch(function(error){
-        console.log(eooro.message);
+        console.log(error.message);
     });
 }
 
