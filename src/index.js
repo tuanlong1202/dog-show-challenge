@@ -1,7 +1,7 @@
 
 document.getElementById('dog-form').addEventListener('submit', function (error) {
     error.preventDefault();
-    updateDog();
+    updateDog();///
 })
 
 function updateDog() {
